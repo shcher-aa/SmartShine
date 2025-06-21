@@ -1,7 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: layout">
-<section>
-    <h1>Добро пожаловать, админ!</h1>
-    <p>Здесь будет админская панель управления.</p>
-</section>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Админ</title>
+</head>
+<body>
+    <div th:replace="fragments/header :: *"></div>
+
+    <h1>Админка</h1>
+    <p>Тут будет контент только для администратора.</p>
+</body>
 </html>
