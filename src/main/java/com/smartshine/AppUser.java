@@ -1,6 +1,6 @@
 package com.smartshine;
 
-import javax.persistence.*; // или jakarta.persistence.* если ты используешь Jakarta
+import jakarta.persistence.*; // 
 
 @Entity
 public class AppUser {
