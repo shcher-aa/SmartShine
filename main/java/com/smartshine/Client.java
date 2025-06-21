@@ -1,1 +1,0 @@
-// Пример содержимого файла SmartShine Java App
