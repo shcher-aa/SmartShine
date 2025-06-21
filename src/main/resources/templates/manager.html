@@ -1,7 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: layout">
-<section>
-    <h1>Добро пожаловать, менеджер!</h1>
-    <p>Здесь будет интерфейс для управления задачами, клиентами и сотрудниками.</p>
-</section>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Менеджер</title>
+</head>
+<body>
+<!-- Подключаем layout.html с передачей параметров -->
+<div th:replace="layout :: layout (~{::title='Менеджер'}, ~{::content='contentSection'})"></div>
+
+<!-- Фрагмент с контентом -->
+<th:block th:fragment="contentSection">
+    <h1>Панель менеджера</h1>
+    <p>Здесь будет информация для менеджера.</p>
+</th:block>
+</body>
 </html>
