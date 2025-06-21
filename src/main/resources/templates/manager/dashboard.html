@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Менеджерская панель</title>
+    <link rel="stylesheet" th:href="@{/css/manager.css}">
+</head>
+<body>
+
+<div class="header">
+    Панель менеджера
+</div>
+
+<div class="sidebar">
+    <a th:href="@{/manager/schedule}">График</a>
+    <a th:href="@{/manager/employees}">Сотрудники</a>
+    <a th:href="@{/manager/clients}">Клиенты</a>
+    <a th:href="@{/logout}">Выход</a>
+</div>
+
+<div class="main-content">
+    <h1>Добро пожаловать, Менеджер!</h1>
+    <p>Выберите раздел в меню слева.</p>
+</div>
+
+<div class="footer">
+    SmartShine &copy; 2025
+</div>
+
+</body>
+</html>
