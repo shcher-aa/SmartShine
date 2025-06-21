@@ -1,4 +1,4 @@
-// Пример содержимого файла SmartShine Java Apppackage com.smartshine;
+package com.smartshine;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
