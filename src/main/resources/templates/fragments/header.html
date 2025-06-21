@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div style="background: #f0f0f0; padding: 10px;">
+        <span>Вы вошли как: <b th:text="${#authentication.principal.username}"></b></span>
+        <span style="float: right;"><a th:href="@{/logout}">Выйти</a></span>
+        <br/>
+        <nav>
+            <a th:href="@{/admin}" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">Админ панель</a>
+            <a th:href="@{/manager}" th:if="${#authorization.expression('hasRole(''MANAGER'')')}">Менеджерская</a>
+            <a th:href="@{/employee}" th:if="${#authorization.expression('hasRole(''EMPLOYEE'')')}">Сотрудник</a>
+        </nav>
+    </div>
+    <hr/>
+</body>
+</html>
