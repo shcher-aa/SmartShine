@@ -2,23 +2,40 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Менеджерская панель</title>
+    <title>Менеджер | SmartShine</title>
     <link rel="stylesheet" th:href="@{/css/manager.css}">
 </head>
 <body>
 
-<!-- Подключаем фрагменты -->
-<div th:replace="::header ::sidebar ::footer"></div>
-
-<!-- Или вот так, если ты уже разделила на файлы -->
+<!-- Хедер -->
 <div th:replace="~{header :: header}"></div>
+
+<!-- Сайдбар -->
 <div th:replace="~{sidebar :: sidebar}"></div>
 
-<main style="margin-left:220px;margin-top:60px;padding:20px;">
-    <h1>Привет, Менеджер!</h1>
-    <p>Добро пожаловать в панель менеджера.</p>
+<!-- Основной контент -->
+<main style="margin-left: 220px; margin-top: 60px; padding: 20px;">
+    <h1>Панель менеджера</h1>
+    <p>Добро пожаловать! Здесь вы можете управлять сотрудниками, расписанием и клиентами.</p>
+
+    <!-- Пример разделов -->
+    <section>
+        <h2>Список сотрудников</h2>
+        <p><a th:href="@{/manager/employees}">Просмотреть всех сотрудников</a></p>
+    </section>
+
+    <section>
+        <h2>Расписание уборок</h2>
+        <p><a th:href="@{/manager/schedule}">Перейти к расписанию</a></p>
+    </section>
+
+    <section>
+        <h2>Клиенты</h2>
+        <p><a th:href="@{/manager/clients}">Управление клиентами</a></p>
+    </section>
 </main>
 
+<!-- Футер -->
 <div th:replace="~{footer :: footer}"></div>
 
 </body>
