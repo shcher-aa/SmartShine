@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
-<head><title>Доступ запрещён</title></head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Доступ запрещён</title>
+</head>
 <body>
-<h1>У тебя нет доступа 😢</h1>
+    <h1>🚫 У вас нет доступа к этой странице</h1>
+    <a th:href="@{/dashboard}">Назад</a>
 </body>
 </html>
