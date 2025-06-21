@@ -11,4 +11,4 @@ WORKDIR /app
 RUN mvn clean package -DskipTests
 
 # Запуск .jar — найдём его автоматически
-CMD ["sh", "-c", "java -jar target/*.jar"]
+CMD ["java", "-jar", "target/smartshine-1.0.0.jar"]
