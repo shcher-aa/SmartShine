@@ -2,21 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>SmartShine</title>
-    <link rel="stylesheet" th:href="@{/style.css}">
+    <title th:text="${pageTitle} ?: 'SmartShine'">SmartShine</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 0; }
+        nav { background-color: #333; padding: 1em; }
+        nav a {
+            color: white; margin-right: 1em; text-decoration: none;
+        }
+        nav a:hover { text-decoration: underline; }
+        main { padding: 2em; }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a th:href="@{/admin}">Админ</a></li>
-                <li><a th:href="@{/manager}">Менеджер</a></li>
-                <li><a th:href="@{/employee}">Сотрудник</a></li>
-                <li><a th:href="@{/logout}">Выйти</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav>
+        <a th:href="@{/admin}" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">Админ</a>
+        <a th:href="@{/manager}" th:if="${#authorization.expression('hasRole(''MANAGER'')')}">Менеджер</a>
+        <a th:href="@{/employee}" th:if="${#authorization.expression('hasRole(''EMPLOYEE'')')}">Сотрудник</a>
+        <a th:href="@{/logout}">Выйти</a>
+    </nav>
 
-    <main th:replace="~{::section}">Контент</main>
+    <main th:replace="~{::section}">Тут будет контент</main>
 </body>
 </html>
