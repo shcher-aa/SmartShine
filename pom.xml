@@ -53,15 +53,16 @@
   </dependencies>
 
  <build>
-  <plugins>
-    <plugin>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-maven-plugin</artifactId>
-      <configuration>
-        <mainClass>com.smartshine.SmartShineApplication</mainClass>
-      </configuration>
-    </plugin>
-  </plugins>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>3.2.4</version>
+            <configuration>
+                <mainClass>com.smartshine.SmartShineApplication</mainClass>
+            </configuration>
+        </plugin>
+    </plugins>
 </build>
 
 </project>
