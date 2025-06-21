@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Менеджер</title>
+    <title>Сотрудник</title>
 </head>
 <body>
-    <div th:replace="layout :: layout (~{::title='Менеджер'}, ~{::content='manager_content'})"></div>
+<div th:replace="layout :: layout (~{::title='Сотрудник'}, ~{::content='contentSection'})"></div>
 
-    <th:block th:fragment="manager_content">
-        <h1>Менеджерская зона</h1>
-        <p>Здесь управление задачами, расписанием и сотрудниками.</p>
-    </th:block>
+<th:block th:fragment="contentSection">
+    <h1>Панель сотрудника</h1>
+    <p>Здесь будет расписание, задачи и клиенты.</p>
+</th:block>
 </body>
 </html>
