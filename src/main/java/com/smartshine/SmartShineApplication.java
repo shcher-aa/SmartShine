@@ -26,3 +26,4 @@ public CommandLineRunner initAdmin(AppUserRepository userRepository, PasswordEnc
         }
     };
 }
+}
