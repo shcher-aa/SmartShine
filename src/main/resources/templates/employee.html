@@ -1,14 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Сотрудник</title>
+    <meta charset="UTF-8">
+    <title>Сотрудник | SmartShine</title>
+    <link rel="stylesheet" th:href="@{/css/employee.css}">
 </head>
 <body>
-<div th:replace="layout :: layout (~{::title='Сотрудник'}, ~{::content='contentSection'})"></div>
 
-<th:block th:fragment="contentSection">
+<!-- Хедер -->
+<div th:replace="~{header :: header}"></div>
+
+<!-- Сайдбар -->
+<div th:replace="~{sidebar :: sidebar}"></div>
+
+<!-- Основной контент -->
+<main style="margin-left: 220px; margin-top: 60px; padding: 20px;">
     <h1>Панель сотрудника</h1>
-    <p>Здесь будет расписание, задачи и клиенты.</p>
-</th:block>
+    <p>Добро пожаловать! Здесь вы можете просматривать своё расписание и задачи на день.</p>
+
+    <!-- Пример разделов -->
+    <section>
+        <h2>Моё расписание</h2>
+        <p><a th:href="@{/employee/schedule}">Перейти к моему графику</a></p>
+    </section>
+
+    <section>
+        <h2>Мои задачи</h2>
+        <p><a th:href="@{/employee/tasks}">Просмотреть текущие задания</a></p>
+    </section>
+
+    <section>
+        <h2>Информация о клиентах</h2>
+        <p><a th:href="@{/employee/clients}">Посмотреть адреса и коды доступа</a></p>
+    </section>
+</main>
+
+<!-- Футер -->
+<div th:replace="~{footer :: footer}"></div>
+
 </body>
 </html>
