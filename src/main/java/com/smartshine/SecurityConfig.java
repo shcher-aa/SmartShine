@@ -51,6 +51,7 @@ public class SecurityConfig {
             )
             .formLogin(form -> form
                 .loginPage("/login")  // если у тебя кастомная страница входа
+                .defaultSuccessUrl("/dashboard", true)
                 .permitAll()
             )
             .logout(logout -> logout
