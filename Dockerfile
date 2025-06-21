@@ -7,7 +7,7 @@ RUN apk add --no-cache maven
 WORKDIR /app
 COPY . /app
 
-WORKDIR /app/src/main
+WORKDIR /app/main
 RUN mvn clean package -DskipTests
 
 # Запуск jar-файла
