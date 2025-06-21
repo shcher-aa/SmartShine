@@ -1,0 +1,20 @@
+<div th:fragment="menu">
+    <nav>
+        <ul>
+            <li><a th:href="@{/dashboard}">Главная</a></li>
+
+            <!-- Показываем в зависимости от роли -->
+            <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+                <a th:href="@{/admin/users}">Пользователи</a>
+            </li>
+            <li th:if="${#authorization.expression('hasRole(''MANAGER'')')}">
+                <a th:href="@{/manager/schedule}">График</a>
+            </li>
+            <li th:if="${#authorization.expression('hasRole(''EMPLOYEE'')')}">
+                <a th:href="@{/employee/tasks}">Мои задания</a>
+            </li>
+
+            <li><a th:href="@{/logout}">Выход</a></li>
+        </ul>
+    </nav>
+</div>
