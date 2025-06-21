@@ -1,29 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title th:text="${pageTitle} ?: 'SmartShine'">SmartShine</title>
-    <style>
-        body { font-family: sans-serif; margin: 0; padding: 0; }
-        nav { background-color: #333; padding: 1em; }
-        nav a {
-            color: white;
-            margin-right: 1em;
-            text-decoration: none;
-        }
-        nav a:hover { text-decoration: underline; }
-        main { padding: 2em; }
-    </style>
+  <meta charset="UTF-8" />
+  <title th:text="${pageTitle} ?: 'SmartShine'">SmartShine</title>
 </head>
 <body>
-<nav>
-    <a th:href="@{/admin}" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">Админ</a>
-    <a th:href="@{/manager}" th:if="${#authorization.expression('hasRole(''MANAGER'')')}">Менеджер</a>
-    <a th:href="@{/employee}" th:if="${#authorization.expression('hasRole(''EMPLOYEE'')')}">Сотрудник</a>
-    <a th:href="@{/logout}">Выйти</a>
-</nav>
 
-<main th:replace="${content}">Загрузка...</main>
+  <div th:replace="fragments/header :: header"></div>
+  <div th:replace="fragments/sidebar :: sidebar"></div>
+
+  <main style="margin-left:220px; padding:2em;">
+    <div th:replace="~{::section}">Контент</div>
+  </main>
+
+  <div th:replace="fragments/footer :: footer"></div>
 
 </body>
 </html>
