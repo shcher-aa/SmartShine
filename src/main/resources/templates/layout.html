@@ -7,20 +7,23 @@
         body { font-family: sans-serif; margin: 0; padding: 0; }
         nav { background-color: #333; padding: 1em; }
         nav a {
-            color: white; margin-right: 1em; text-decoration: none;
+            color: white;
+            margin-right: 1em;
+            text-decoration: none;
         }
         nav a:hover { text-decoration: underline; }
         main { padding: 2em; }
     </style>
 </head>
 <body>
-    <nav>
-        <a th:href="@{/admin}" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">Админ</a>
-        <a th:href="@{/manager}" th:if="${#authorization.expression('hasRole(''MANAGER'')')}">Менеджер</a>
-        <a th:href="@{/employee}" th:if="${#authorization.expression('hasRole(''EMPLOYEE'')')}">Сотрудник</a>
-        <a th:href="@{/logout}">Выйти</a>
-    </nav>
+<nav>
+    <a th:href="@{/admin}" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">Админ</a>
+    <a th:href="@{/manager}" th:if="${#authorization.expression('hasRole(''MANAGER'')')}">Менеджер</a>
+    <a th:href="@{/employee}" th:if="${#authorization.expression('hasRole(''EMPLOYEE'')')}">Сотрудник</a>
+    <a th:href="@{/logout}">Выйти</a>
+</nav>
 
-    <main th:replace="~{::section}">Тут будет контент</main>
+<main th:replace="${content}">Загрузка...</main>
+
 </body>
 </html>
