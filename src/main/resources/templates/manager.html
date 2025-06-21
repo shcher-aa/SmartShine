@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Менеджер</title>
+    <meta charset="UTF-8">
+    <title>Менеджерская панель</title>
+    <link rel="stylesheet" th:href="@{/css/manager.css}">
 </head>
 <body>
-<!-- Подключаем layout.html с передачей параметров -->
-<div th:replace="layout :: layout (~{::title='Менеджер'}, ~{::content='contentSection'})"></div>
 
-<!-- Фрагмент с контентом -->
-<th:block th:fragment="contentSection">
-    <h1>Панель менеджера</h1>
-    <p>Здесь будет информация для менеджера.</p>
-</th:block>
+<!-- Подключаем фрагменты -->
+<div th:replace="::header ::sidebar ::footer"></div>
+
+<!-- Или вот так, если ты уже разделила на файлы -->
+<div th:replace="~{header :: header}"></div>
+<div th:replace="~{sidebar :: sidebar}"></div>
+
+<main style="margin-left:220px;margin-top:60px;padding:20px;">
+    <h1>Привет, Менеджер!</h1>
+    <p>Добро пожаловать в панель менеджера.</p>
+</main>
+
+<div th:replace="~{footer :: footer}"></div>
+
 </body>
 </html>
