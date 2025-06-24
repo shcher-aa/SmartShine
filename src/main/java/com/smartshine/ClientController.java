@@ -5,36 +5,43 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/clients")
 public class ClientController {
 
+    private final ClientRepository clientRepository;
+
     @Autowired
-    private ClientRepository clientRepository;
+    public ClientController(ClientRepository clientRepository) {
+        this.clientRepository = clientRepository;
+    }
 
     @GetMapping
     public String listClients(Model model) {
-        model.addAttribute("clients", clientRepository.findAll());
+        List<Client> clients = clientRepository.findAll();
+        model.addAttribute("clients", clients);
         return "clients";
     }
 
     @GetMapping("/new")
-    public String showCreateForm(Model model) {
+    public String newClientForm(Model model) {
         model.addAttribute("client", new Client());
         return "client-form";
     }
 
-    @PostMapping
+    @GetMapping("/edit/{id}")
+    public String editClientForm(@PathVariable Long id, Model model) {
+        Client client = clientRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Клиент не найден: " + id));
+        model.addAttribute("client", client);
+        return "client-form";
+    }
+
+    @PostMapping("/save")
     public String saveClient(@ModelAttribute Client client) {
         clientRepository.save(client);
         return "redirect:/clients";
-    }
-
-    @GetMapping("/edit/{id}")
-    public String showEditForm(@PathVariable Long id, Model model) {
-        Client client = clientRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Неверный ID клиента: " + id));
-        model.addAttribute("client", client);
-        return "client-form";
     }
 
     @GetMapping("/delete/{id}")
