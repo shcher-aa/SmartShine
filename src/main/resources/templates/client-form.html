@@ -1,28 +1,116 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: section">
 <head>
+    <meta charset="UTF-8">
     <title th:text="${client.id != null} ? 'Редактировать клиента' : 'Добавить клиента'">Форма клиента</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 2em;
+            background-color: #f7f7f7;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 1em;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 0.5em;
+            margin-top: 0.3em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .form-buttons {
+            margin-top: 2em;
+            display: flex;
+            gap: 1em;
+        }
+
+        button {
+            padding: 0.7em 1.5em;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            padding: 0.7em 1.5em;
+            background-color: #ccc;
+            text-decoration: none;
+            color: black;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #bbb;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 1em;
+        }
+    </style>
 </head>
 <body>
-    <h2 th:text="${client.id != null} ? 'Редактировать клиента' : 'Добавить клиента'"></h2>
 
-    <form th:action="@{/clients/save}" th:object="${client}" method="post">
-        <input type="hidden" th:field="*{id}"/>
+<h2 th:text="${client.id != null} ? 'Редактировать клиента' : 'Добавить клиента'"></h2>
 
-        <label for="name">Имя:</label>
-        <input type="text" id="name" th:field="*{name}" required/><br/>
+<form th:action="@{/clients/save}" th:object="${client}" method="post">
+    <input type="hidden" th:field="*{id}" />
 
-        <label for="address">Адрес:</label>
-        <input type="text" id="address" th:field="*{address}" required/><br/>
+    <label for="name">Имя</label>
+    <input type="text" id="name" th:field="*{name}" required />
 
-        <label for="accessCode">Код доступа:</label>
-        <input type="text" id="accessCode" th:field="*{accessCode}" required/><br/>
+    <label for="address">Адрес</label>
+    <input type="text" id="address" th:field="*{address}" required />
 
-        <label for="cleaningTimeMinutes">Время уборки (мин):</label>
-        <input type="number" id="cleaningTimeMinutes" th:field="*{cleaningTimeMinutes}" required/><br/>
+    <label for="accessCode">Код доступа</label>
+    <input type="text" id="accessCode" th:field="*{accessCode}" required />
 
-        <button type="submit">💾 Сохранить</button>
-        <a th:href="@{/clients}">⬅ Назад</a>
-    </form>
+    <label for="cleaningTimeMinutes">Время уборки (мин)</label>
+    <input type="number" id="cleaningTimeMinutes" th:field="*{cleaningTimeMinutes}" required />
+
+    <label for="phone">Телефон</label>
+    <input type="text" id="phone" th:field="*{phone}" />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" th:field="*{email}" />
+
+    <label for="note">Заметки</label>
+    <textarea id="note" th:field="*{note}" rows="4"></textarea>
+
+    <div class="form-buttons">
+        <button type="submit">Сохранить</button>
+        <a th:href="@{/clients}">Назад</a>
+    </div>
+</form>
+
 </body>
 </html>
