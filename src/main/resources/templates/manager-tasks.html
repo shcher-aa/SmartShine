@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список задач менеджера</title>
+    <link rel="stylesheet" th:href="@{/css/manager-style.css}">
+    <style>
+        .filter-form {
+            margin-bottom: 20px;
+        }
+        .filter-form label {
+            margin-right: 15px;
+        }
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .pagination a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .pagination span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Список задач</h1>
+
+    <div class="actions">
+        <a href="/tasks/new" class="btn">Создать новую задачу</a>
+    </div>
+
+    <form method="get" class="filter-form">
+        <label>Дата:
+            <input type="date" name="date" th:value="${param.date}" />
+        </label>
+        <label>Сотрудник:
+            <input type="text" name="employee" th:value="${param.employee}" />
+        </label>
+        <label>Клиент:
+            <input type="text" name="client" th:value="${param.client}" />
+        </label>
+        <button type="submit" class="btn-small">Фильтровать</button>
+    </form>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Дата</th>
+            <th>Время</th>
+            <th>Сотрудник</th>
+            <th>Клиент</th>
+            <th>Описание</th>
+            <th>Выполнено</th>
+            <th>Примечание</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task : ${tasks}">
+            <td th:text="${task.date}">2025-06-24</td>
+            <td th:text="${task.timeStart + ' - ' + task.timeEnd}">10:00 - 12:00</td>
+            <td th:text="${task.assignedEmployee.fullName}">Иван Иванов</td>
+            <td th:text="${task.client.name}">Клиент</td>
+            <td th:text="${task.description}">Уборка офиса</td>
+            <td>
+                <span th:text="${task.completed ? '✅ Да' : '❌ Нет'}"></span>
+            </td>
+            <td th:text="${task.employeeNote}">-</td>
+            <td>
+                <a th:href="@{'/tasks/edit/' + ${task.id}}" class="btn-small">Редактировать</a>
+                <form th:action="@{'/tasks/' + ${task.id} + '/delete'}" method="post" style="display:inline;">
+                    <input type="hidden" name="_method" value="delete"/>
+                    <button type="submit" class="btn-small">Удалить</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <a th:href="@{'/manager/tasks?page=' + ${currentPage - 1}}" th:if="${currentPage > 1}">← Пред.</a>
+        <span>Страница <span th:text="${currentPage}">1</span> из <span th:text="${totalPages}">1</span></span>
+        <a th:href="@{'/manager/tasks?page=' + ${currentPage + 1}}" th:if="${currentPage < totalPages}">След. →</a>
+    </div>
+</div>
+</body>
+</html>

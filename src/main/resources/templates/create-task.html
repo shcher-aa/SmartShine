@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание задачи</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Создать задачу</h1>
+        <form th:action="@{/tasks/create}" method="post">
+            <label>Описание:
+                <input type="text" name="description" required>
+            </label><br>
+
+            <label>Дата:
+                <input type="date" name="date" required>
+            </label><br>
+
+            <label>Начало:
+                <input type="time" name="timeStart">
+            </label><br>
+
+            <label>Конец:
+                <input type="time" name="timeEnd">
+            </label><br>
+
+            <label>Сотрудник:
+                <select name="employeeId" required>
+                    <option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}">Сотрудник</option>
+                </select>
+            </label><br>
+
+            <label>Клиент:
+                <select name="clientId" required>
+                    <option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.name}">Клиент</option>
+                </select>
+            </label><br>
+
+            <button type="submit">Создать</button>
+        </form>
+    </div>
+</body>
+</html>

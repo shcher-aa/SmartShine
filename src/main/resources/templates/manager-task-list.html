@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список задач - Менеджер</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Список задач</h1>
+
+        <form th:action="@{/manager/tasks}" method="get" class="filter-form">
+            <label for="employee">Сотрудник:</label>
+            <input type="text" id="employee" name="employee">
+
+            <label for="client">Клиент:</label>
+            <input type="text" id="client" name="client">
+
+            <label for="date">Дата:</label>
+            <input type="date" id="date" name="date">
+
+            <button type="submit">Фильтровать</button>
+        </form>
+
+        <table class="task-table">
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Время</th>
+                    <th>Описание</th>
+                    <th>Клиент</th>
+                    <th>Сотрудник</th>
+                    <th>Статус</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="task : ${tasks}">
+                    <td th:text="${task.date}">2025-06-24</td>
+                    <td th:text="${task.timeStart} + ' - ' + ${task.timeEnd}">10:00 - 11:00</td>
+                    <td th:text="${task.description}">Уборка кухни</td>
+                    <td th:text="${task.client.name}">Клиент</td>
+                    <td th:text="${task.assignedEmployee.firstName}">Имя</td>
+                    <td th:text="${task.completed ? '✔ Выполнено' : '✘ Не выполнено'}"></td>
+                    <td>
+                        <a th:href="@{'/tasks/edit/' + ${task.id}}">Редактировать</a> |
+                        <a th:href="@{'/tasks/delete/' + ${task.id}}" onclick="return confirm('Удалить задачу?')">Удалить</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

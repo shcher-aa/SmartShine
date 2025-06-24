@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Мои задачи</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <form th:action="@{/}" method="post">
+        <input type="hidden" name="_method" value="put" />
+    </form>
+</head>
+<body>
+    <div class="container">
+        <h1>Мои задачи</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Описание</th>
+                    <th>Клиент</th>
+                    <th>Дата</th>
+                    <th>Начало</th>
+                    <th>Конец</th>
+                    <th>Завершено</th>
+                    <th>Примечание</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="task : ${tasks}">
+                    <td th:text="${task.description}">Описание</td>
+                    <td th:text="${task.client.name}">Клиент</td>
+                    <td th:text="${task.date}">Дата</td>
+                    <td th:text="${task.timeStart}">Начало</td>
+                    <td th:text="${task.timeEnd}">Конец</td>
+                    <td th:text="${task.completed ? 'Да' : 'Нет'}">Завершено</td>
+                    <td>
+                        <form th:action="@{'/tasks/' + ${task.id} + '/complete'}" method="post">
+                            <input type="hidden" name="_method" value="put"/>
+                            <input type="text" name="note" th:id="'note-' + ${task.id}" th:value="${task.employeeNote}" placeholder="Введите примечание"/>
+                            <button type="submit" th:if="${!task.completed}">Завершить</button>
+                            <span th:if="${task.completed}">✔</span>
+                        </form>
+                    </td>
+                    <td>
+                        <form th:action="@{/employee/tasks/view}" method="get">
+                            <input type="hidden" name="taskId" th:value="${task.id}" />
+                            <button type="submit">Детали</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
