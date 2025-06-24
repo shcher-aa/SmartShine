@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: section">
+<head>
+    <title>Клиенты</title>
+</head>
+<body>
+<h2>Список клиентов</h2>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Имя</th>
+        <th>Адрес</th>
+        <th>Код доступа</th>
+        <th>Время уборки (мин)</th>
+    </tr>
+    <tr th:each="client : ${clients}">
+        <td th:text="${client.name}">Имя</td>
+        <td th:text="${client.address}">Адрес</td>
+        <td th:text="${client.accessCode}">Код</td>
+        <td th:text="${client.cleaningTimeMinutes}">Время</td>
+    </tr>
+</table>
+</body>
+</html>
