@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: section">
+<head>
+    <title th:text="${client.id != null} ? 'Редактировать клиента' : 'Добавить клиента'">Форма клиента</title>
+</head>
+<body>
+    <h2 th:text="${client.id != null} ? 'Редактировать клиента' : 'Добавить клиента'"></h2>
+
+    <form th:action="@{/clients/save}" th:object="${client}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+
+        <label for="name">Имя:</label>
+        <input type="text" id="name" th:field="*{name}" required/><br/>
+
+        <label for="address">Адрес:</label>
+        <input type="text" id="address" th:field="*{address}" required/><br/>
+
+        <label for="accessCode">Код доступа:</label>
+        <input type="text" id="accessCode" th:field="*{accessCode}" required/><br/>
+
+        <label for="cleaningTimeMinutes">Время уборки (мин):</label>
+        <input type="number" id="cleaningTimeMinutes" th:field="*{cleaningTimeMinutes}" required/><br/>
+
+        <button type="submit">💾 Сохранить</button>
+        <a th:href="@{/clients}">⬅ Назад</a>
+    </form>
+</body>
+</html>
