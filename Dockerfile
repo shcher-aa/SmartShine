@@ -8,11 +8,14 @@ WORKDIR /app
 COPY . .
 COPY .mvn /app/.mvn
 
-RUN mvn dependency:purge-local-repository
-RUN mvn clean package -DskipTests -U --settings .mvn/settings.xml
+# Очистим весь кэш Maven, чтобы не мешал
+RUN rm -rf /root/.m2
 
-# Сборка проекта
-RUN mvn clean package -DskipTests
+# Удалим только локальные зависимости
+RUN mvn dependency:purge-local-repository
+
+# Пакуем проект
+RUN mvn clean package -DskipTests -U
 
 # Запуск jar-файла
 CMD ["java", "-jar", "target/smartshine-1.0.0.jar"]
