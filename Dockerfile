@@ -1,13 +1,15 @@
-FROM eclipse-temurin:17-jdk-alpine
+FROM eclipse-temurin:17-jdk
 
 # Установка Maven
-RUN apk add --no-cache maven
+RUN apt-get update && apt-get install -y maven
 
 # Копируем проект
 WORKDIR /app
 COPY . .
+COPY .mvn /app/.mvn
 
 RUN mvn dependency:purge-local-repository
+RUN mvn clean package -DskipTests -U --settings .mvn/settings.xml
 
 # Сборка проекта
 RUN mvn clean package -DskipTests
