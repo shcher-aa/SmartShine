@@ -7,6 +7,8 @@ RUN apk add --no-cache maven
 WORKDIR /app
 COPY . .
 
+RUN mvn dependency:purge-local-repository
+
 # Сборка проекта
 RUN mvn clean package -DskipTests
 
