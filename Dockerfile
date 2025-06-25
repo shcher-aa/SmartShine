@@ -1,7 +1,7 @@
 FROM eclipse-temurin:17-jdk
 
 # Установка Maven
-RUN apt-get update && apt-get install -y maven
+RUN apt-get update && apt-get install -y maven ca-certificates
 
 # Копируем проект
 WORKDIR /app
