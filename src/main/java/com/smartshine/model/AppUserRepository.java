@@ -1,4 +1,4 @@
-package com.smartshine;
+package com.smartshine.model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;

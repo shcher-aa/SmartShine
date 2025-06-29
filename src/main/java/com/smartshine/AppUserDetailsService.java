@@ -1,5 +1,8 @@
 package com.smartshine;
 
+import com.smartshine.repository.AppUserRepository;
+import com.smartshine.model.AppUser;
+
 import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;
 
