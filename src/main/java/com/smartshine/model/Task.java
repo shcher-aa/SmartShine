@@ -85,4 +85,12 @@ public class Task {
     public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
+
+    public void setDate(LocalDate date) {
+    this.date = date;
+}
+
+public LocalDate getDate() {
+    return this.date;
+}
 }
