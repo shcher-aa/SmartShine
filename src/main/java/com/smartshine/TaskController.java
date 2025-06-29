@@ -1,5 +1,12 @@
 package com.smartshine.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
 import com.smartshine.model.Task;
 import com.smartshine.model.AppUser;
 import com.smartshine.repository.TaskRepository;
