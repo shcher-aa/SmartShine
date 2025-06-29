@@ -17,4 +17,10 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     Page<Task> findByAssignedEmployeeAndClientAndDate(AppUser employee, Client client, LocalDate date, Pageable pageable);
     Page<Task> findByClient(Client client, Pageable pageable);
     Page<Task> findByClientAndDate(Client client, LocalDate date, Pageable pageable);
+    Page<Task> findByAssignedEmployeeIdAndClientIdAndDate(Long employeeId, Long clientId, LocalDate date, Pageable pageable);
+    Page<Task> findByAssignedEmployeeIdAndClientId(Long employeeId, Long clientId, Pageable pageable);
+    Page<Task> findByAssignedEmployeeIdAndDate(Long employeeId, LocalDate date, Pageable pageable);
+    Page<Task> findByClientIdAndDate(Long clientId, LocalDate date, Pageable pageable);
+    Page<Task> findByAssignedEmployeeId(Long employeeId, Pageable pageable);
+    Page<Task> findByClientId(Long clientId, Pageable pageable);
 }
