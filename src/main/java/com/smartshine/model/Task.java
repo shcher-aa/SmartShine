@@ -2,6 +2,8 @@
 
 package com.smartshine.model;
 
+import com.smartshine.model.AppUser;
+
 import jakarta.persistence.*;
 import java.time.LocalDate;
 

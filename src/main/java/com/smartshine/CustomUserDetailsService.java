@@ -1,5 +1,8 @@
 package com.smartshine;
 
+import com.smartshine.model.AppUser;
+import com.smartshine.repository.AppUserRepository;
+
 import org.springframework.security.core.userdetails.*;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 

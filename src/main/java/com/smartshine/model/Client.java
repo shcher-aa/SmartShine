@@ -1,4 +1,4 @@
-package com.smartshine;
+package com.smartshine.model;
 
 import jakarta.persistence.*;
 

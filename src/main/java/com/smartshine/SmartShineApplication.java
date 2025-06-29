@@ -4,6 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
+import com.smartshine.model.AppUser;
+import com.smartshine.model.Role;
+import com.smartshine.repository.AppUserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
