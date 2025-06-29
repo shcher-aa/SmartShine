@@ -6,7 +6,6 @@ RUN apt-get update && apt-get install -y maven ca-certificates
 # Копируем проект
 WORKDIR /app
 COPY pom.xml .
-COPY mvnw .
 COPY .mvn .mvn
 COPY src src
 
