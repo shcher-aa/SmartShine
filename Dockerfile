@@ -17,7 +17,7 @@ RUN rm -rf /root/.m2
 RUN mvn dependency:purge-local-repository
 
 # Пакуем проект
-RUN mvn clean package -DskipTests -U
+RUN mvn clean package -DskipTests -X
 
 # Запуск jar-файла
 CMD ["java", "-jar", "target/smartshine-1.0.0.jar"]
