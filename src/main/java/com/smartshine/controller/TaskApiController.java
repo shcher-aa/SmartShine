@@ -1,4 +1,4 @@
-package com.smartshine;
+package com.smartshine.controller;
 
 import com.smartshine.model.Task;
 import com.smartshine.repository.TaskRepository;

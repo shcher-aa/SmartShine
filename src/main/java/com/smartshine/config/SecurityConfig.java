@@ -1,4 +1,4 @@
-package com.smartshine;
+package com.smartshine.config;
 
 import com.smartshine.repository.AppUserRepository;
 

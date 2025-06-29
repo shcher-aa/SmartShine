@@ -1,4 +1,4 @@
-package com.smartshine;
+package com.smartshine.controller;
 
 import com.smartshine.model.Client;
 import com.smartshine.repository.ClientRepository;
