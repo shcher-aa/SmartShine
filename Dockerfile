@@ -5,10 +5,10 @@ RUN apt-get update && apt-get install -y maven ca-certificates
 
 # Копируем проект
 WORKDIR /app
-COPY . .
-COPY .mvn /app/.mvn
-
-RUN ls -R /app/src
+COPY pom.xml .
+COPY mvnw .
+COPY .mvn .mvn
+COPY src src
 
 # Очистим весь кэш Maven, чтобы не мешал
 RUN rm -rf /root/.m2
