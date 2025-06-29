@@ -8,6 +8,8 @@ WORKDIR /app
 COPY . .
 COPY .mvn /app/.mvn
 
+RUN ls -R /app/src
+
 # Очистим весь кэш Maven, чтобы не мешал
 RUN rm -rf /root/.m2
 
