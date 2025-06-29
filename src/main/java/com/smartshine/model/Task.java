@@ -30,6 +30,8 @@ public class Task {
 
     // Геттеры и сеттеры
 
+    private LocalDate date;
+
     public Long getId() {
         return id;
     }
