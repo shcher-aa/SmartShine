@@ -1,6 +1,7 @@
 package com.smartshine.config;
 
 import com.smartshine.repository.AppUserRepository;
+import com.smartshine.service.CustomUserDetailsService;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
