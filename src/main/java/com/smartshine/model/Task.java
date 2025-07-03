@@ -6,6 +6,7 @@ import com.smartshine.model.AppUser;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 public class Task {
@@ -31,6 +32,11 @@ public class Task {
     // Геттеры и сеттеры
 
     private LocalDate date;
+
+    private LocalTime timeStart;
+    private LocalTime timeEnd;
+    private String employeeNote;
+    private AppUser assignedEmployee;
 
     public Long getId() {
         return id;
@@ -89,10 +95,42 @@ public class Task {
     }
 
     public void setDate(LocalDate date) {
-    this.date = date;
-}
+        this.date = date;
+    }
 
-public LocalDate getDate() {
-    return this.date;
-}
+    public LocalDate getDate() {
+        return this.date;
+    }
+
+    public LocalTime getTimeStart() {
+        return timeStart;
+    }
+
+    public void setTimeStart(LocalTime timeStart) {
+        this.timeStart = timeStart;
+    }
+
+    public LocalTime getTimeEnd() {
+        return timeEnd;
+    }
+
+    public void setTimeEnd(LocalTime timeEnd) {
+        this.timeEnd = timeEnd;
+    }
+
+    public String getEmployeeNote() {
+        return employeeNote;
+    }
+
+    public void setEmployeeNote(String employeeNote) {
+        this.employeeNote = employeeNote;
+    }
+
+    public AppUser getAssignedEmployee() {
+        return assignedEmployee;
+    }
+
+    public void setAssignedEmployee(AppUser assignedEmployee) {
+        this.assignedEmployee = assignedEmployee;
+    }
 }
