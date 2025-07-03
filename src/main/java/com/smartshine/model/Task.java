@@ -19,9 +19,6 @@ public class Task {
 
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "employee_id")
-    private AppUser assignedTo;
 
     private LocalDate dueDate;
 
@@ -38,6 +35,8 @@ public class Task {
     private LocalTime timeStart;
     private LocalTime timeEnd;
     private String employeeNote;
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
     private AppUser assignedEmployee;
 
     @ManyToOne
@@ -60,13 +59,6 @@ public class Task {
         this.description = description;
     }
 
-    public AppUser getAssignedTo() {
-        return assignedTo;
-    }
-
-    public void setAssignedTo(AppUser assignedTo) {
-        this.assignedTo = assignedTo;
-    }
 
     public LocalDate getDueDate() {
         return dueDate;
