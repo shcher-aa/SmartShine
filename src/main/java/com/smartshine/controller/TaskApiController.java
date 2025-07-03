@@ -37,7 +37,7 @@ public class TaskApiController {
             task.setTimeStart(updatedTask.getTimeStart());
             task.setTimeEnd(updatedTask.getTimeEnd());
             task.setClient(updatedTask.getClient());
-            task.setEmployee(updatedTask.getEmployee());
+            task.setAssignedEmployee(updatedTask.getAssignedEmployee());
             task.setEmployeeNote(updatedTask.getEmployeeNote());
             return taskRepository.save(task);
         }
