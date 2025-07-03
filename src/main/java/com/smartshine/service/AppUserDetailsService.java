@@ -1,4 +1,4 @@
-package com.smartshine;
+package com.smartshine.service;
 
 import com.smartshine.repository.AppUserRepository;
 import com.smartshine.model.AppUser;

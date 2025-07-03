@@ -147,4 +147,9 @@ public class Task {
     public void setClient(Client client) {
         this.client = client;
     }
+
+    // Для обратной совместимости
+    public AppUser getEmployee() {
+        return this.assignedEmployee;
+    }
 }
