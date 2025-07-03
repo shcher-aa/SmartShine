@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title th:text="${pageTitle} ?: 'SmartShine'">SmartShine</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+
+  <div th:replace="fragments/header :: header"></div>
+  <div th:replace="fragments/sidebar :: sidebar"></div>
+
+  <main style="margin-left:220px; padding:2em;">
+    <div th:replace="~{::section}">Контент</div>
+  </main>
+
+  <div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
