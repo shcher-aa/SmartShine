@@ -1,6 +1,7 @@
 package com.smartshine.model;
 
 import jakarta.persistence.*; // 
+import com.smartshine.model.Role;
 
 @Entity
 public class AppUser {
