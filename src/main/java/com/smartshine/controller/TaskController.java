@@ -33,7 +33,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 @Controller
-@RequestMapping("/api/tasks")
+@RequestMapping("/tasks")
 public class TaskController {
 
     @Autowired
@@ -91,8 +91,7 @@ public class TaskController {
         return "Задача успешно создана!";
     }
 
-    @PreAuthorize("hasRole('MANAGER') or hasRole('ADMIN')")
-    @PostMapping
+    @PostMapping("/form")
     public Task createTask(@RequestBody Task task) {
         task.setCompleted(false);
         task.setEmployeeNote("");
