@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.smartshine.model.Task;
-import com.smartshine.model.AppUser;
 import com.smartshine.repository.TaskRepository;
 import com.smartshine.repository.AppUserRepository;
 import com.smartshine.repository.ClientRepository;
@@ -53,7 +52,7 @@ public class TaskController {
     @GetMapping("/new")
     public ModelAndView showTaskForm() {
         ModelAndView mav = new ModelAndView("create-task");
-        mav.addObject("employees", userRepository.findByRole(AppUser.AppUserRole.EMPLOYEE));
+        mav.addObject("employees", userRepository.findByRole("EMPLOYEE"));
         mav.addObject("clients", clientRepository.findAll());
         return mav;
     }
@@ -148,7 +147,7 @@ public class TaskController {
         }
 
         model.addAttribute("tasks", tasks);
-        model.addAttribute("employees", userRepository.findByRole(AppUser.AppUserRole.EMPLOYEE));
+        model.addAttribute("employees", userRepository.findByRole("EMPLOYEE"));
         model.addAttribute("clients", clientRepository.findAll());
         model.addAttribute("currentPage", page);
 

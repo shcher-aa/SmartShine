@@ -2,6 +2,8 @@
 
 package com.smartshine.model;
 
+import com.smartshine.model.Client;
+
 import com.smartshine.model.AppUser;
 
 import jakarta.persistence.*;
@@ -37,6 +39,10 @@ public class Task {
     private LocalTime timeEnd;
     private String employeeNote;
     private AppUser assignedEmployee;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
 
     public Long getId() {
         return id;
@@ -132,5 +138,13 @@ public class Task {
 
     public void setAssignedEmployee(AppUser assignedEmployee) {
         this.assignedEmployee = assignedEmployee;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }
