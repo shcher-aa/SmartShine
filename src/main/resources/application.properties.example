@@ -1,0 +1,19 @@
+# Настройки подключения к базе данных
+spring.datasource.url=jdbc:mysql://localhost:3306/smartshine
+spring.datasource.username=${DB_USER}
+spring.datasource.password=${DB_PASS}
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# JPA (Hibernate)
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+
+# Локальный порт
+server.port=8080
+
+# Thymeleaf
+spring.thymeleaf.cache=false
+
+# Логгирование
+logging.level.org.springframework=INFO
