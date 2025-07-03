@@ -1,4 +1,4 @@
-package com.smartshine.model.Client;
+import com.smartshine.model.Client;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
