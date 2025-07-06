@@ -17,3 +17,6 @@ spring.thymeleaf.cache=false
 
 # Логгирование
 logging.level.org.springframework=INFO
+
+server.tomcat.max-threads=10
+spring.main.lazy-initialization=true
