@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: section">
+<head>
+    <title>Клиенты</title>
+</head>
+<body>
+<h2>Добавить клиента</h2>
+<form th:action="@{/clients}" th:object="${newClient}" method="post">
+    <input type="text" th:field="*{name}" placeholder="Имя" required />
+    <input type="text" th:field="*{address}" placeholder="Адрес" required />
+    <input type="text" th:field="*{accessCode}" placeholder="Код доступа" />
+    <input type="number" th:field="*{cleaningTimeMinutes}" placeholder="Время уборки (мин)" />
+    <input type="text" th:field="*{phone}" placeholder="Телефон" />
+    <input type="email" th:field="*{email}" placeholder="Email" />
+    <input type="text" th:field="*{note}" placeholder="Заметка" />
+    <button type="submit">Сохранить</button>
+</form>
+
+<hr/>
+
+<h2>Список клиентов</h2>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Имя</th>
+        <th>Адрес</th>
+        <th>Код доступа</th>
+        <th>Время уборки (мин)</th>
+        <th>Телефон</th>
+        <th>Email</th>
+        <th>Заметка</th>
+        <th>Действия</th>
+    </tr>
+    <tr th:each="client : ${clients}">
+        <td th:text="${client.name}">Имя</td>
+        <td th:text="${client.address}">Адрес</td>
+        <td th:text="${client.accessCode}">Код</td>
+        <td th:text="${client.cleaningTimeMinutes}">Время</td>
+        <td th:text="${client.phone}">Телефон</td>
+        <td th:text="${client.email}">Email</td>
+        <td th:text="${client.note}">Заметка</td>
+        <td>
+            <a th:href="@{'/clients/edit/' + ${client.id}}">Редактировать</a> |
+            <a th:href="@{'/clients/delete/' + ${client.id}}" 
+               onclick="return confirm('Удалить этого клиента?')">Удалить</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
