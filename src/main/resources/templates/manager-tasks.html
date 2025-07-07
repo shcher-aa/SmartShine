@@ -26,6 +26,7 @@
     </style>
 </head>
 <body>
+<div th:replace="~{layout :: header}"></div>
 <div class="container">
     <h1>Список задач</h1>
 
@@ -87,5 +88,6 @@
         <a th:href="@{'/manager/tasks?page=' + ${currentPage + 1}}" th:if="${currentPage < totalPages}">След. →</a>
     </div>
 </div>
+<div th:replace="~{layout :: footer}"></div>
 </body>
 </html>

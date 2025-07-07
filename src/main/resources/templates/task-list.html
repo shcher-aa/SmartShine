@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Список задач</title>
-    <link rel="stylesheet" th:href="@{/css/manager-style.css}">
-</head>
-<body>
-    <div th:insert="~{fragments/header :: header}"></div>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(~{::body})}">
+<div layout:fragment="body">
     <div class="container">
         <h1>Список задач</h1>
         <table>
@@ -36,6 +29,5 @@
             </tbody>
         </table>
     </div>
-    <div th:insert="~{fragments/footer :: footer}"></div>
-</body>
+</div>
 </html>

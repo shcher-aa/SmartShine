@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: section">
-<head>
-    <title>Клиенты</title>
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: section}">
+<div>
+    <h1>Клиенты</h1>
+</div>
 <h2>Добавить клиента</h2>
 <form th:action="@{/clients}" th:object="${newClient}" method="post">
     <input type="text" th:field="*{name}" placeholder="Имя" required />
@@ -45,5 +44,4 @@
         </td>
     </tr>
 </table>
-</body>
 </html>

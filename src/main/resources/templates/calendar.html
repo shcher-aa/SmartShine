@@ -1,1 +1,38 @@
-// Пример содержимого файла SmartShine Java App
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Календарь</title>
+    <meta charset="UTF-8">
+    <th:block layout:fragment="head"></th:block>
+</head>
+<body layout:decorate="~{layout}">
+<section layout:fragment="content">
+    <div class="container mt-4">
+        <h2 class="mb-3">Календарь</h2>
+        <p class="mb-3" th:text="'Месяц: ' + ${month} + ' ' + ${year}"></p>
+        <table class="table table-bordered text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>Пн</th>
+                    <th>Вт</th>
+                    <th>Ср</th>
+                    <th>Чт</th>
+                    <th>Пт</th>
+                    <th class="text-primary">Сб</th>
+                    <th class="text-danger">Вс</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="week : ${calendar}">
+                    <td th:each="day : ${week}"
+                        th:text="${day != null && day.month == month ? day.dayOfMonth : ''}"
+                        th:classappend="${day != null && day.month == month ? (day.dayOfWeek.name() == 'SATURDAY' ? 'text-primary' : (day.dayOfWeek.name() == 'SUNDAY' ? 'text-danger' : '')) : 'text-muted'}">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+</body>
+</html>

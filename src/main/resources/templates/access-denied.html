@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <title>Доступ запрещён</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <layout:decorate template="layout.html"/>
 </head>
 <body>
-    <h1>🚫 У вас нет доступа к этой странице</h1>
-    <a th:href="@{/dashboard}">Назад</a>
+    <div layout:fragment="content">
+        <h1>🚫 У вас нет доступа к этой странице</h1>
+        <a th:href="@{/dashboard}">Назад</a>
+    </div>
 </body>
 </html>

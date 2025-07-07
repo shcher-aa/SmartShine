@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
     <title>Сотрудник | SmartShine</title>
@@ -7,36 +9,28 @@
 </head>
 <body>
 
-<!-- Хедер -->
-<div th:replace="~{header :: header}"></div>
+<div th:fragment="content">
+    <main style="margin-left: 220px; margin-top: 60px; padding: 20px;">
+        <h1>Панель сотрудника</h1>
+        <p>Добро пожаловать! Здесь вы можете просматривать своё расписание и задачи на день.</p>
 
-<!-- Сайдбар -->
-<div th:replace="~{sidebar :: sidebar}"></div>
+        <!-- Пример разделов -->
+        <section>
+            <h2>Моё расписание</h2>
+            <p><a th:href="@{/employee/schedule}">Перейти к моему графику</a></p>
+        </section>
 
-<!-- Основной контент -->
-<main style="margin-left: 220px; margin-top: 60px; padding: 20px;">
-    <h1>Панель сотрудника</h1>
-    <p>Добро пожаловать! Здесь вы можете просматривать своё расписание и задачи на день.</p>
+        <section>
+            <h2>Мои задачи</h2>
+            <p><a th:href="@{/employee/tasks}">Просмотреть текущие задания</a></p>
+        </section>
 
-    <!-- Пример разделов -->
-    <section>
-        <h2>Моё расписание</h2>
-        <p><a th:href="@{/employee/schedule}">Перейти к моему графику</a></p>
-    </section>
-
-    <section>
-        <h2>Мои задачи</h2>
-        <p><a th:href="@{/employee/tasks}">Просмотреть текущие задания</a></p>
-    </section>
-
-    <section>
-        <h2>Информация о клиентах</h2>
-        <p><a th:href="@{/employee/clients}">Посмотреть адреса и коды доступа</a></p>
-    </section>
-</main>
-
-<!-- Футер -->
-<div th:replace="~{footer :: footer}"></div>
+        <section>
+            <h2>Информация о клиентах</h2>
+            <p><a th:href="@{/employee/clients}">Посмотреть адреса и коды доступа</a></p>
+        </section>
+    </main>
+</div>
 
 </body>
 </html>

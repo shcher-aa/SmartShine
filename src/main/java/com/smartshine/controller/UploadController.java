@@ -1,7 +1,13 @@
 
 package com.smartshine.controller;
 
-import org.springframework.stereotype.Controller;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +22,8 @@ import java.nio.file.Paths;
 @Controller
 public class UploadController {
 
-    private static String UPLOADED_FOLDER = "uploads/";
+    private static final Logger logger = LoggerFactory.getLogger(UploadController.class);
+    private static final String UPLOADED_FOLDER = "uploads/";
 
     @GetMapping("/upload")
     public String uploadForm() {
@@ -41,7 +48,8 @@ public class UploadController {
                     "Файл '" + file.getOriginalFilename() + "' успешно загружен!");
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Ошибка при загрузке файла", e);
+            redirectAttributes.addFlashAttribute("message", "Ошибка при загрузке файла: " + e.getMessage());
         }
 
         return "redirect:/upload";

@@ -1,43 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Админ — SmartShine</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}" />
-    <link rel="stylesheet" th:href="@{/css/admin.css}" />
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout (~{::body}, ~{::main})}">
 <body>
-
-<!-- ХЕДЕР -->
-<header>
-    <h1>SmartShine — Панель администратора</h1>
-</header>
-
-<!-- СТРАНИЧНЫЙ МЕНЮ -->
-<aside>
-    <nav>
-        <ul>
-            <li><a th:href="@{/admin}">🏠 Главная</a></li>
-            <li><a th:href="@{/admin/users}">👥 Пользователи</a></li>
-            <li><a th:href="@{/admin/clients}">🧾 Клиенты</a></li>
-            <li><a th:href="@{/admin/employees}">📋 Сотрудники</a></li>
-            <li><a th:href="@{/admin/schedule}">🧼 Задачи и расписание</a></li>
-            <li><a th:href="@{/admin/settings}">⚙️ Настройки</a></li>
-            <li><a th:href="@{/logout}">🚪 Выход</a></li>
-        </ul>
-    </nav>
-</aside>
 
 <!-- ОСНОВНОЙ КОНТЕНТ -->
 <main>
     <h2>Добро пожаловать, админ!</h2>
     <p>Здесь вы можете управлять системой, пользователями и расписанием.</p>
 </main>
-
-<!-- ФУТЕР -->
-<footer>
-    <p>&copy; 2025 SmartShine. Все права защищены.</p>
-</footer>
 
 </body>
 </html>

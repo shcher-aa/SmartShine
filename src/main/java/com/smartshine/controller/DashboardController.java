@@ -1,8 +1,5 @@
 package com.smartshine.controller;
 
-import com.smartshine.model.AppUser;
-import com.smartshine.repository.AppUserRepository;
-
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
