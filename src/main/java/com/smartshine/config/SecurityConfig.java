@@ -1,8 +1,5 @@
 package com.smartshine.config;
 
-import com.smartshine.repository.AppUserRepository;
-import com.smartshine.service.CustomUserDetailsService;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,9 +13,18 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.smartshine.repository.AppUserRepository;
+import com.smartshine.security.CustomAuthenticationSuccessHandler;
+import com.smartshine.service.CustomUserDetailsService;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    @Bean
+    public CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler() {
+        return new CustomAuthenticationSuccessHandler();
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -54,7 +60,7 @@ public class SecurityConfig {
             )
             .formLogin(form -> form
                 .loginPage("/login")  // если у тебя кастомная страница входа
-                .defaultSuccessUrl("/dashboard", true)
+                .successHandler(customAuthenticationSuccessHandler())
                 .permitAll()
             )
             .logout(logout -> logout
